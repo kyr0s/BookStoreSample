@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
+using BookStore.Container;
+using BookStore.Implementation;
 
 namespace BookStore
 {
@@ -13,6 +11,10 @@ namespace BookStore
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            NinjectContainer.RegisterModules(new MainModule());
+
+            var bookSearchServcie = NinjectContainer.Resolve<IBookSearchServcie>();
+            bookSearchServcie.InitializeIndex();
         }
     }
 }

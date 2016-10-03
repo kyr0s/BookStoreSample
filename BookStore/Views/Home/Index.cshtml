@@ -1,0 +1,30 @@
+﻿@model BookStore.Models.Home.BookListViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div id="content">
+    <form method="get" action="@Url.Action("Index")">
+        <input type="text" name="query" value="@Model.Query"/>
+        <input type="submit" value="Filter"/>
+    </form>
+    <table>
+        <thead>
+        <tr><th>ISBN</th><th>Author </th><th>Title</th><th>Provider</th></tr>
+        </thead>
+        <tbody>
+        @foreach (var book in Model.Books)
+        {
+            <tr>
+                <td>@book.ISBN</td>
+                <td>@book.Author</td>
+                <td>@book.Title</td>
+                <td>
+                    @string.Join(", ", book.Providers)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
