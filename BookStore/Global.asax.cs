@@ -13,7 +13,7 @@ namespace BookStore
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             NinjectContainer.RegisterModules(new MainModule());
 
-            var bookSearchServcie = NinjectContainer.Resolve<IBookSearchServcie>();
+            var bookSearchServcie = NinjectContainer.Resolve<IBookSearchService>();
             bookSearchServcie.InitializeIndex();
         }
     }

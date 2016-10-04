@@ -11,7 +11,7 @@ using Version = Lucene.Net.Util.Version;
 
 namespace BookStore.Implementation
 {
-    public class BookSearchServcie : IBookSearchServcie
+    public class BookSearchService : IBookSearchService
     {
         private const Version version = Version.LUCENE_30;
         private const string isbnFieldName = "isbn";
@@ -24,7 +24,7 @@ namespace BookStore.Implementation
 
         private readonly IBookDataProvider bookDataProvider;
 
-        public BookSearchServcie(IBookDataProvider bookDataProvider)
+        public BookSearchService(IBookDataProvider bookDataProvider)
         {
             this.bookDataProvider = bookDataProvider;
             queryCleaner = new Regex(@"[^\w\d\s-]*", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);

@@ -118,7 +118,7 @@
     <Compile Include="Container\NinjectContainer.cs" />
     <Compile Include="Container\NinjectResolver.cs" />
     <Compile Include="Implementation\Book.cs" />
-    <Compile Include="Implementation\BookSearchServcie.cs" />
+    <Compile Include="Implementation\BookSearchService.cs" />
     <Compile Include="Implementation\BookWrapper.cs" />
     <Compile Include="Implementation\DataProviders\BookDataProvider.cs" />
     <Compile Include="Implementation\DataProviders\IBookDataProvider.cs" />
@@ -130,7 +130,7 @@
     <Compile Include="Models\Home\BookListViewModelBuilder.cs" />
     <Compile Include="Models\Home\BookViewModel.cs" />
     <Compile Include="Models\Home\IBookListViewModelBuilder.cs" />
-    <Compile Include="Implementation\IBookSearchServcie.cs" />
+    <Compile Include="Implementation\IBookSearchService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
