@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using BookStore.Implementation.DataProviders;
 using Lucene.Net.Analysis.Standard;
 using Lucene.Net.Documents;
 using Lucene.Net.Index;
@@ -11,7 +10,7 @@ using Version = Lucene.Net.Util.Version;
 
 namespace BookStore.Implementation
 {
-    public class BookSearchService : IBookSearchService
+    public class BookIndex : IBookIndex
     {
         private const Version version = Version.LUCENE_30;
         private const string isbnFieldName = "isbn";
@@ -22,11 +21,10 @@ namespace BookStore.Implementation
         private Dictionary<string, BookWrapper> booksByIsbn;
         private readonly Regex queryCleaner;
 
-        private readonly IBookDataProvider bookDataProvider;
-
-        public BookSearchService(IBookDataProvider bookDataProvider)
+        public BookIndex()
         {
-            this.bookDataProvider = bookDataProvider;
+            searcher = new IndexSearcher(new RAMDirectory(), true);
+            booksByIsbn = new Dictionary<string, BookWrapper>();
             queryCleaner = new Regex(@"[^\w\d\s-]*", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
         }
 
@@ -59,9 +57,8 @@ namespace BookStore.Implementation
             return foundBooks;
         }
 
-        public void InitializeIndex()
+        public void Rebuild(BookWrapper[] books)
         {
-            var books = bookDataProvider.SelectAll();
             booksByIsbn = books.ToDictionary(b => b.Book.ISBN);
             var directory = new RAMDirectory();
 

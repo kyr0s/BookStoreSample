@@ -118,7 +118,8 @@
     <Compile Include="Container\NinjectContainer.cs" />
     <Compile Include="Container\NinjectResolver.cs" />
     <Compile Include="Implementation\Book.cs" />
-    <Compile Include="Implementation\BookSearchService.cs" />
+    <Compile Include="Implementation\BookIndex.cs" />
+    <Compile Include="Implementation\BookIndexBuilder.cs" />
     <Compile Include="Implementation\BookWrapper.cs" />
     <Compile Include="Implementation\DataProviders\BookDataProvider.cs" />
     <Compile Include="Implementation\DataProviders\IBookDataProvider.cs" />
@@ -126,11 +127,12 @@
     <Compile Include="Implementation\DataProviders\ProviderXmlData.cs" />
     <Compile Include="Implementation\DataProviders\XmlFileService.cs" />
     <Compile Include="Implementation\DataProviders\IXmlFileService.cs" />
+    <Compile Include="Implementation\IBookIndexBuilder.cs" />
     <Compile Include="Models\Home\BookListViewModel.cs" />
     <Compile Include="Models\Home\BookListViewModelBuilder.cs" />
     <Compile Include="Models\Home\BookViewModel.cs" />
     <Compile Include="Models\Home\IBookListViewModelBuilder.cs" />
-    <Compile Include="Implementation\IBookSearchService.cs" />
+    <Compile Include="Implementation\IBookIndex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Implementation\DataProviders\Parsers\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

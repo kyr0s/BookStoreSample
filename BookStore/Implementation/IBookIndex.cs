@@ -1,8 +1,8 @@
 ﻿namespace BookStore.Implementation
 {
-    public interface IBookSearchService
+    public interface IBookIndex
     {
         BookWrapper[] Search(string query, int count);
-        void InitializeIndex();
+        void Rebuild(BookWrapper[] books);
     }
 }

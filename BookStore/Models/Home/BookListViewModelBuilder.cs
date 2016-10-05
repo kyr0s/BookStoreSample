@@ -6,16 +6,16 @@ namespace BookStore.Models.Home
     public class BookListViewModelBuilder : IBookListViewModelBuilder
     {
         private const int maxResults = 20;
-        private readonly IBookSearchService bookSearchService;
+        private readonly IBookIndex bookIndex;
 
-        public BookListViewModelBuilder(IBookSearchService bookSearchService)
+        public BookListViewModelBuilder(IBookIndex bookIndex)
         {
-            this.bookSearchService = bookSearchService;
+            this.bookIndex = bookIndex;
         }
 
         public BookListViewModel Build(string query)
         {
-            var searchResult = bookSearchService.Search(query, maxResults);
+            var searchResult = bookIndex.Search(query, maxResults);
             var books = searchResult
                 .Select(b => Create(b.Book.ISBN, b.Book.Author, b.Book.Title, b.Providers))
                 .ToArray();
