@@ -124,6 +124,8 @@
     <Compile Include="Implementation\DataProviders\BookDataProvider.cs" />
     <Compile Include="Implementation\DataProviders\IBookDataProvider.cs" />
     <Compile Include="Implementation\DataProviders\IProviderXmlParser.cs" />
+    <Compile Include="Implementation\DataProviders\Parsers\DCComicsParser.cs" />
+    <Compile Include="Implementation\DataProviders\Parsers\MarvelParser.cs" />
     <Compile Include="Implementation\DataProviders\ProviderXmlData.cs" />
     <Compile Include="Implementation\DataProviders\XmlFileService.cs" />
     <Compile Include="Implementation\DataProviders\IXmlFileService.cs" />
@@ -149,7 +151,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Implementation\DataProviders\Parsers\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
