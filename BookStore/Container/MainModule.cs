@@ -1,4 +1,5 @@
-﻿using Ninject.Extensions.Conventions;
+﻿using System.Web.Mvc;
+using Ninject.Extensions.Conventions;
 using Ninject.Modules;
 
 namespace BookStore.Container
@@ -7,12 +8,19 @@ namespace BookStore.Container
     {
         public override void Load()
         {
-            Kernel.Bind(x =>
-            {
-                x.FromThisAssembly()
-                    .SelectAllClasses()
-                    .BindDefaultInterfaces();
-            });
+            Kernel.Bind(x => x
+                            .FromThisAssembly()
+                            .SelectAllClasses()
+                            .BindAllInterfaces()
+                            .Configure(c => c.InSingletonScope())
+                            );
+
+            Kernel.Bind(x => x
+                            .FromThisAssembly()
+                            .SelectAllClasses()
+                            .InheritedFrom<Controller>()
+                            .BindAllInterfaces()
+                            .Configure(c => c.InTransientScope()));
         }
     }
 }
