@@ -29,7 +29,7 @@ namespace BookStore.Implementation
 
         public BookWrapper[] Search(string query, int count)
         {
-            if (searcher == null)
+            if (searcher == null || string.IsNullOrWhiteSpace(query))
             {
                 return new BookWrapper[0];
             }
