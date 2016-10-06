@@ -5,7 +5,7 @@ using Rhino.Mocks;
 namespace BookStore.Tests
 {
     [TestFixture]
-    abstract class UnitTestBase
+    public abstract class UnitTestBase
     {
         private MockRepository mocks;
 

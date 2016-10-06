@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Lucene.Net.Analysis.Standard;
@@ -23,14 +24,17 @@ namespace BookStore.Implementation
 
         public BookIndex()
         {
-            searcher = new IndexSearcher(new RAMDirectory(), true);
-            booksByIsbn = new Dictionary<string, BookWrapper>();
             queryCleaner = new Regex(@"[^\w\d\s-]*", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
         }
 
         public BookWrapper[] Search(string query, int count)
         {
-            var processedQuery = queryCleaner.Replace(query, string.Empty);
+            if (searcher == null)
+            {
+                return new BookWrapper[0];
+            }
+
+            var processedQuery = queryCleaner.Replace(query, string.Empty).ToLower(CultureInfo.InvariantCulture);
             if (string.IsNullOrWhiteSpace(processedQuery))
             {
                 return booksByIsbn.Values
@@ -61,7 +65,6 @@ namespace BookStore.Implementation
         {
             booksByIsbn = books.ToDictionary(b => b.Book.ISBN);
             var directory = new RAMDirectory();
-
             using (var indexWriter = new IndexWriter(directory, new StandardAnalyzer(version), true, IndexWriter.MaxFieldLength.UNLIMITED))
             {
                 foreach (var book in books)
@@ -76,8 +79,12 @@ namespace BookStore.Implementation
 
         private static Query CreatePhraseQuery(string field, string query)
         {
-            var phraseQuery = new PhraseQuery {Slop = 3};
-            phraseQuery.Add(new Term(field, query));
+            var phraseQuery = new PhraseQuery { Slop = 3 };
+            var terms = query.Split(' ', '\t');
+            foreach (var term in terms)
+            {
+                phraseQuery.Add(new Term(field, term));
+            }
             return phraseQuery;
         }
 
@@ -86,8 +93,8 @@ namespace BookStore.Implementation
             var doc = new Document();
 
             doc.Add(new Field(isbnFieldName, bookWrapper.Book.ISBN, Field.Store.YES, Field.Index.NOT_ANALYZED));
-            doc.Add(new Field(authorFieldName, bookWrapper.Book.Author, Field.Store.NO, Field.Index.ANALYZED));
-            doc.Add(new Field(titleFieldName, bookWrapper.Book.Title, Field.Store.NO, Field.Index.ANALYZED));
+            doc.Add(new Field(authorFieldName, bookWrapper.Book.Author, Field.Store.YES, Field.Index.ANALYZED));
+            doc.Add(new Field(titleFieldName, bookWrapper.Book.Title, Field.Store.YES, Field.Index.ANALYZED));
 
             writer.AddDocument(doc);
         }
