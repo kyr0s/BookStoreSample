@@ -1,23 +1,29 @@
-﻿using BookStore.Implementation.DataProviders;
+﻿using System.Linq;
+using BookStore.Implementation.DataProviders;
 
 namespace BookStore.Implementation
 {
     public class BookIndexBuilder : IBookIndexBuilder
     {
         private readonly IBookIndex bookIndex;
-        private readonly IBookDataProvider bookDataProvider;
+        private readonly ISpecificBookDataProvider[] specificBookDataProviders;
 
         public BookIndexBuilder(
             IBookIndex bookIndex,
-            IBookDataProvider bookDataProvider)
+            ISpecificBookDataProvider[] specificBookDataProviders)
         {
             this.bookIndex = bookIndex;
-            this.bookDataProvider = bookDataProvider;
+            this.specificBookDataProviders = specificBookDataProviders;
         }
 
         public void Build()
         {
-            var books = bookDataProvider.SelectAll();
+            var books = specificBookDataProviders
+                .SelectMany(p => p.SelectAll().Select(b => new { Book = b, p.ProviderName }))
+                .GroupBy(p => p.Book)
+                .Select(g => new BookWrapper(g.Key, g.Select(p => p.ProviderName).ToArray()))
+                .ToArray();
+
             bookIndex.Rebuild(books);
         }
     }

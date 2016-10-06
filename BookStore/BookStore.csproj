@@ -121,11 +121,10 @@
     <Compile Include="Implementation\BookIndex.cs" />
     <Compile Include="Implementation\BookIndexBuilder.cs" />
     <Compile Include="Implementation\BookWrapper.cs" />
-    <Compile Include="Implementation\DataProviders\BookDataProvider.cs" />
-    <Compile Include="Implementation\DataProviders\IBookDataProvider.cs" />
+    <Compile Include="Implementation\DataProviders\IConcreeteBookDataProvider.cs" />
     <Compile Include="Implementation\DataProviders\IProviderXmlParser.cs" />
-    <Compile Include="Implementation\DataProviders\Parsers\DCComicsParser.cs" />
-    <Compile Include="Implementation\DataProviders\Parsers\MarvelParser.cs" />
+    <Compile Include="Implementation\DataProviders\DC\DCComicsParser.cs" />
+    <Compile Include="Implementation\DataProviders\Marvel\MarvelParser.cs" />
     <Compile Include="Implementation\DataProviders\ProviderXmlData.cs" />
     <Compile Include="Implementation\DataProviders\XmlFileService.cs" />
     <Compile Include="Implementation\DataProviders\IXmlFileService.cs" />

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Xml;
 
-namespace BookStore.Implementation.DataProviders.Parsers
+namespace BookStore.Implementation.DataProviders.Marvel
 {
     public class MarvelParser : IProviderXmlParser
     {

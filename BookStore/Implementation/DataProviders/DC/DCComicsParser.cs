@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 
-namespace BookStore.Implementation.DataProviders.Parsers
+namespace BookStore.Implementation.DataProviders.DC
 {
     public class DCComicsParser : IProviderXmlParser
     {
