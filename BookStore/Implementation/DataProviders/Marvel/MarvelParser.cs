@@ -4,11 +4,9 @@ using System.Xml;
 
 namespace BookStore.Implementation.DataProviders.Marvel
 {
-    public class MarvelParser : IProviderXmlParser
+    public class MarvelParser : IMarvelParser
     {
         private const string publisherName = "marvel";
-
-        public string ProviderName => "Marvel Comics";
 
         public bool CanParse(ProviderXmlData providerXmlData)
         {
@@ -40,14 +38,14 @@ namespace BookStore.Implementation.DataProviders.Marvel
 
         private Book ParseBook(XmlNode source)
         {
-            var isbn = ReadAttribure(source, "isbn");
-            var author = ReadAttribure(source, "author");
-            var title = ReadAttribure(source, "title");
+            var isbn = ReadAttribute(source, "isbn");
+            var author = ReadAttribute(source, "author");
+            var title = ReadAttribute(source, "title");
 
             return new Book(isbn, author, title);
         }
 
-        private string ReadAttribure(XmlNode source, string name)
+        private string ReadAttribute(XmlNode source, string name)
         {
             if (source.Attributes == null)
             {

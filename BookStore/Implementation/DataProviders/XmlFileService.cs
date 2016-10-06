@@ -8,9 +8,17 @@ namespace BookStore.Implementation.DataProviders
     {
         private const string dataDirectory = "Upload";
 
+        private readonly IPathUtility pathUtility;
+
+        public XmlFileService(IPathUtility pathUtility)
+        {
+            this.pathUtility = pathUtility;
+        }
+
         public ProviderXmlData[] LoadAll()
         {
-            var dataFiles = Directory.GetFiles(dataDirectory, "*.xml", SearchOption.AllDirectories);
+            var absolutePath = pathUtility.GetAbsolutePath(dataDirectory);
+            var dataFiles = Directory.GetFiles(absolutePath, "*.xml", SearchOption.AllDirectories);
             var documents = dataFiles.Select(Create).ToArray();
 
             return documents;

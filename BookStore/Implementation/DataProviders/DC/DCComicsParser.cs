@@ -1,21 +1,11 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using System.Xml;
 
 namespace BookStore.Implementation.DataProviders.DC
 {
-    public class DCComicsParser : IProviderXmlParser
+    public class DCComicsParser : IDCComicsParser
     {
-        public string ProviderName => "DC Comics";
-
-        public bool CanParse(ProviderXmlData providerXmlData)
-        {
-            var fileName = Path.GetFileNameWithoutExtension(providerXmlData.FilePath);
-            return !string.IsNullOrWhiteSpace(fileName) &&
-                   fileName.StartsWith("dc_", StringComparison.OrdinalIgnoreCase);
-        }
-
         public Book[] Parse(ProviderXmlData providerXmlData)
         {
             var booksList = providerXmlData.Data.SelectNodes("/Data/book");
