@@ -1,9 +1,24 @@
-﻿namespace BookStore.Implementation
+﻿using System;
+
+namespace BookStore.Implementation
 {
     public class Book
     {
         public Book(string isbn, string author, string title)
         {
+            if (string.IsNullOrEmpty(isbn))
+            {
+                throw new ArgumentNullException(nameof(isbn));
+            }
+            if (string.IsNullOrEmpty(author))
+            {
+                throw new ArgumentNullException(nameof(author));
+            }
+            if (string.IsNullOrEmpty(title))
+            {
+                throw new ArgumentNullException(nameof(title));
+            }
+
             ISBN = isbn;
             Author = author;
             Title = title;
@@ -13,9 +28,9 @@
         public string Author { get; }
         public string Title { get; }
 
-        protected bool Equals(Book other)
+        private bool Equals(Book other)
         {
-            return string.Equals(ISBN, other.ISBN);
+            return string.Equals(ISBN, other.ISBN, StringComparison.OrdinalIgnoreCase);
         }
 
         public override bool Equals(object obj)
@@ -28,7 +43,7 @@
 
         public override int GetHashCode()
         {
-            return ISBN?.GetHashCode() ?? 0;
+            return ISBN?.ToLowerInvariant().GetHashCode() ?? 0;
         }
     }
 }

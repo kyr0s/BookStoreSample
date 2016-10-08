@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementation\BookIndexTest.cs" />
+    <Compile Include="Implementation\BookTest.cs" />
+    <Compile Include="Implementation\DataProviders\XmlFileServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestBase.cs" />
   </ItemGroup>

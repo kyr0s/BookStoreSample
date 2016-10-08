@@ -1,4 +1,4 @@
-﻿namespace BookStore.Implementation.DataProviders
+﻿namespace BookStore.Implementation.Utils
 {
     public interface IPathUtility
     {

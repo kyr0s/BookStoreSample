@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Web;
 
-namespace BookStore.Implementation.DataProviders
+namespace BookStore.Implementation.Utils
 {
     public class PathUtility : IPathUtility
     {
