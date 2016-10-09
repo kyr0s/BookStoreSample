@@ -40,7 +40,7 @@ namespace BookStore.Implementation.DataProviders.DC
 
         private string ReadNodeText(XmlNode source, string nodeName)
         {
-            var node = source.SelectSingleNode(nodeName);
+            var node = source.SelectSingleNode($"{nodeName}/text()");
             if (string.IsNullOrWhiteSpace(node?.Value))
             {
                 throw new Exception($"Can't parse node \"{nodeName}\" from\r\n{source.OuterXml}");
