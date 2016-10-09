@@ -6,6 +6,13 @@ namespace BookStore.Implementation.DataProviders.DC
 {
     public class DCComicsParser : IDCComicsParser
     {
+        private readonly IBookFactory bookFactory;
+
+        public DCComicsParser(IBookFactory bookFactory)
+        {
+            this.bookFactory = bookFactory;
+        }
+
         public Book[] Parse(ProviderXmlData providerXmlData)
         {
             var booksList = providerXmlData.Data.SelectNodes("/Data/book");
@@ -28,7 +35,7 @@ namespace BookStore.Implementation.DataProviders.DC
             var author = ReadNodeText(source, "author");
             var title = ReadNodeText(source, "title");
 
-            return new Book(isbn, author, title);
+            return bookFactory.Create(isbn, author, title);
         }
 
         private string ReadNodeText(XmlNode source, string nodeName)

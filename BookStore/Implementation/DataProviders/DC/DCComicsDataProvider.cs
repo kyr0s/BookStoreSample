@@ -22,7 +22,7 @@ namespace BookStore.Implementation.DataProviders.DC
             this.dcComicsParser = dcComicsParser;
         }
 
-        public string ProviderName => "DC Comics";
+        public string Name => "DC Comics";
 
         public Book[] SelectAll()
         {

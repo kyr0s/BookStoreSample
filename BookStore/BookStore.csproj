@@ -122,11 +122,13 @@
     <Compile Include="Container\NinjectContainer.cs" />
     <Compile Include="Container\NinjectResolver.cs" />
     <Compile Include="Implementation\Book.cs" />
+    <Compile Include="Implementation\BookFactory.cs" />
     <Compile Include="Implementation\BookIndex.cs" />
     <Compile Include="Implementation\BookIndexBuilder.cs" />
     <Compile Include="Implementation\BookWrapper.cs" />
     <Compile Include="Implementation\DataProviders\DC\DCComicsDataProvider.cs" />
     <Compile Include="Implementation\DataProviders\DC\IDCComicsParser.cs" />
+    <Compile Include="Implementation\IBookFactory.cs" />
     <Compile Include="Implementation\Utils\DirectoryWrapper.cs" />
     <Compile Include="Implementation\Utils\FileWrapper.cs" />
     <Compile Include="Implementation\Utils\IDirectoryWrapper.cs" />

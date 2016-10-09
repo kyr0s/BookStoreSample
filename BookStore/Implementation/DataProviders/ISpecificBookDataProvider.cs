@@ -2,7 +2,7 @@
 {
     public interface ISpecificBookDataProvider
     {
-        string ProviderName { get; }
+        string Name { get; }
         Book[] SelectAll();
     }
 }

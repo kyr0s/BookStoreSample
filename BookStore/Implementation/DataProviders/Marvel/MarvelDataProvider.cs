@@ -19,7 +19,7 @@ namespace BookStore.Implementation.DataProviders.Marvel
             this.marvelParser = marvelParser;
         }
 
-        public string ProviderName => "Marvel";
+        public string Name => "Marvel";
 
         public Book[] SelectAll()
         {

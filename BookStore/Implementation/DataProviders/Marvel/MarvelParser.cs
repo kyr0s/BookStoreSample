@@ -8,6 +8,13 @@ namespace BookStore.Implementation.DataProviders.Marvel
     {
         private const string publisherName = "marvel";
 
+        private readonly IBookFactory bookFactory;
+
+        public MarvelParser(IBookFactory bookFactory)
+        {
+            this.bookFactory = bookFactory;
+        }
+
         public bool CanParse(ProviderXmlData providerXmlData)
         {
             var publisherNameNode = providerXmlData.Data.SelectSingleNode("/data/publisher/name/text()");
@@ -42,7 +49,7 @@ namespace BookStore.Implementation.DataProviders.Marvel
             var author = ReadAttribute(source, "author");
             var title = ReadAttribute(source, "title");
 
-            return new Book(isbn, author, title);
+            return bookFactory.Create(isbn, author, title);
         }
 
         private string ReadAttribute(XmlNode source, string name)

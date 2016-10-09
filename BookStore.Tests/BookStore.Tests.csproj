@@ -60,14 +60,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\BookFactoryTest.cs" />
+    <Compile Include="Implementation\BookIndexBuilderTest.cs" />
     <Compile Include="Implementation\BookIndexTest.cs" />
     <Compile Include="Implementation\BookTest.cs" />
+    <Compile Include="Implementation\BookWrapperTest.cs" />
+    <Compile Include="Implementation\DataProviders\DC\DCComicsDataProviderTest.cs" />
+    <Compile Include="Implementation\DataProviders\Marvel\MarvelDataProviderTest.cs" />
     <Compile Include="Implementation\DataProviders\XmlFileServiceTest.cs" />
+    <Compile Include="Models\Home\BookListViewModelBuilderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NLog.config" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
