@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data>
+  <publisher>
+    <name>MARVEL</name>
+  </publisher>
+  <booklist>
+    <book isbn="978-0-7851-8400-3" author="Jason Aaron" title="Thanos Rising" />
+    <book isbn="978-0-7851-8933-6" author="Gerry Duggan" title="Deadpool: Volume 5: The Wedding of Deadpool" />
+  </booklist>
+</data>

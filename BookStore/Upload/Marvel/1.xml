@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data>
+  <publisher>
+    <name>marvel</name>
+  </publisher>
+  <booklist>
+    <book isbn="978-0-7851-6453-1" author="Chris Claremont" title="X-Men: Days of Future Past" />
+    <book isbn="978-0-7851-8487-4" author="Matt Fraction" title="Hawkeye, Vol. 1: Oversized" />
+    <book isbn="978-0-7851-8877-3" author="Peter David" title="Captain America: Winter Soldier: Prelude" />
+  </booklist>
+</data>

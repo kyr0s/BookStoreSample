@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Data>
+  <book>
+    <isbn>978-1-4012-4041-7</isbn>
+    <author>Karl Kesel</author>
+    <title>Harley Quinn: Night and Day</title>
+  </book>
+  <book>
+    <isbn>978-1-4012-5877-1</isbn>
+    <author>Scott Snyder</author>
+    <title>The Joker: Endgame</title>
+  </book>
+  <book>
+    <isbn>978-1-4012-5689-0</isbn>
+    <author>Scott Snyder</author>
+    <title>Batman: Volume 7: Endgame</title>
+  </book>
+  <book>
+    <isbn>978-1-4012-3839-1</isbn>
+    <author>Judd Winick</author>
+    <title>Catwoman: Volume 2: Dollhouse</title>
+  </book>
+</Data>
