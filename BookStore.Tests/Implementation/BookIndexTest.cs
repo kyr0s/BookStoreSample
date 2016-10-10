@@ -95,5 +95,14 @@ namespace BookStore.Tests.Implementation
             var actual = foundBooks;
             actual.ShouldBeEquivalentTo(new[] {expected1, expected2});
         }
+
+        [Test]
+        [TestCase(null)]
+        [TestCase("")]
+        public void SearchTestWhenQueryIsEmpty(string query)
+        {
+            var foundBooks = bookIndex.Search(query, 3);
+            foundBooks.Should().HaveCount(3);
+        }
     }
 }

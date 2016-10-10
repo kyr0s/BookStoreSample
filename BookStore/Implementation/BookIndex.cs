@@ -29,12 +29,12 @@ namespace BookStore.Implementation
 
         public BookWrapper[] Search(string query, int count)
         {
-            if (searcher == null || string.IsNullOrWhiteSpace(query))
+            if (searcher == null)
             {
                 return new BookWrapper[0];
             }
 
-            var processedQuery = queryCleaner.Replace(query, string.Empty).ToLower(CultureInfo.InvariantCulture);
+            var processedQuery = queryCleaner.Replace(query ?? string.Empty, string.Empty).ToLower(CultureInfo.InvariantCulture);
             if (string.IsNullOrWhiteSpace(processedQuery))
             {
                 return booksByIsbn.Values
