@@ -6,25 +6,32 @@
 
 <div id="content">
     <form method="get" action="@Url.Action("Index")">
-        <input type="text" name="query" value="@Model.Query"/>
-        <input type="submit" value="Filter"/>
+        <div class="input-group">
+            <input class="form-control" name="query" type="text" value="@Model.Query" />
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Filter</button>
+            </span>
+        </div>
     </form>
-    <table>
+    <table class="table table-striped">
         <thead>
-        <tr><th>ISBN</th><th>Author </th><th>Title</th><th>Provider</th></tr>
+        <tr>
+            <th class="col-md-2">ISBN</th>
+            <th class="col-md-3">Author</th>
+            <th class="col-md-5">Title</th>
+            <th class="col-md-2">Provider</th>
+        </tr>
         </thead>
         <tbody>
-        @foreach (var book in Model.Books)
-        {
-            <tr>
-                <td>@book.ISBN</td>
-                <td>@book.Author</td>
-                <td>@book.Title</td>
-                <td>
-                    @string.Join(", ", book.Providers)
-                </td>
-            </tr>
-        }
+            @foreach (var book in Model.Books)
+            {
+                <tr>
+                    <td class="col-md-2">@book.ISBN</td>
+                    <td class="col-md-3">@book.Author</td>
+                    <td class="col-md-5">@book.Title</td>
+                    <td class="col-md-2">@string.Join(", ", book.Providers)</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
